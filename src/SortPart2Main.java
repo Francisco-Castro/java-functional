@@ -15,10 +15,12 @@ public class SortPart2Main {
         books.add(new Book("Story of Two Cities", 200));
         books.add(new Book("El principito", 140));
 
-        Comparator<Book> comparingPages = Comparator.comparing(Book::getCopies);
+        Comparator<Book> comparingCopies = Comparator.comparing(Book::getCopies);
+        Comparator<Book> comparingTitle = Comparator.comparing(Book::getTitle);
 
         List<Book> collect = books.stream()
-                .sorted(comparingPages.reversed())
+                .skip(2)
+                .sorted(comparingCopies.reversed())
                 .limit(3)
                 .collect(Collectors.toList());
 
